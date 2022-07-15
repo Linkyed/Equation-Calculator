@@ -1,4 +1,3 @@
-from Basic_Equation_Calculator import calculate
 from general_functions import show_full_equation, show_part_equation
 from time import sleep
 #Creating a object to save operator and numbers of a equation
