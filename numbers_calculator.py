@@ -10,11 +10,11 @@ class teste:
 #saved in this lists bellow for my program calculate the result.
 #OBS:[The way that i will get this numbers and operators is unknown, but i will try to develope one GUI to get them]
 
-operators_left = [7, 7, 5, 5, 7, 4, 2] # 7 = Plus, 6 = Minus, 5 = Multiply, 4 = Division, 3 = Exponetation, 2 = Square Root
-numbers_left = [2, 3, 4, 2, 4, 2, 2, 4]
-#The equation above is :2+3+4*2*4+2/(4**1/2): the final is a square root
+operators_left = [7, 7, 5, 5, 7, 4, 3, 2] # 7 = Plus, 6 = Minus, 5 = Multiply, 4 = Division, 3 = Square Root, 2 = Exponetation
+numbers_left = [2, 3, 4, 2, 4, 2, 2, 2, 2]
+#The equation above is :2+3+4*2*4+2/²√2²: the final is a square root
 
-operators_right = [6] # 7 = Plus, 6 = Minus, 5 = Multiply, 4 = Division, 3 = Exponetation, 2 = Square Root
+operators_right = [6] # 7 = Plus, 6 = Minus, 5 = Multiply, 4 = Division, 3 = Square Root, 2 = Exponetation
 numbers_right = [7, 2] 
 #The equation above is :7-2:
 
@@ -123,21 +123,8 @@ def calculate(object_list, numbers, operators):
                     numbers[object_list[i].location] = n
                     numbers.pop(object_list[i].location+1)
                   
-                #If it is a exponentiation
-                elif object_list[i].operator == 3:
-                    write_txt(txt, 'Equation: '+visualizer_equation(numbers, operators))
-                    n = numbers[object_list[i].location] ** numbers[object_list[i].location+1]
-                    
-                    for part in object_list:
-                        if part.location > object_list[i].location:
-                            part.location -= 1
-                    
-                    write_txt(txt, "\nNow you solve the Exponentiation of {}**{}\n\n".format(numbers[object_list[i].location], numbers[object_list[i].location+1]))
-                    numbers[object_list[i].location] = n
-                    numbers.pop(object_list[i].location+1)
-                    
                 #If it is a Square Root
-                elif object_list[i].operator == 2:
+                elif object_list[i].operator == 3:
                     write_txt(txt, 'Equation: '+visualizer_equation(numbers, operators))
                     n = numbers[object_list[i].location+1] ** (1/numbers[object_list[i].location])
                     
@@ -146,6 +133,21 @@ def calculate(object_list, numbers, operators):
                             part.location -= 1
                     
                     write_txt(txt, "\nNow you solve the Square Root of {}√{}\n\n".format(numbers[object_list[i].location], numbers[object_list[i].location+1]))
+                    numbers[object_list[i].location] = n
+                    numbers.pop(object_list[i].location+1)
+                    
+                #If it is a Exponentation
+                elif object_list[i].operator == 2:
+                    
+
+                    write_txt(txt, 'Equation: '+visualizer_equation(numbers, operators))
+                    n = numbers[object_list[i].location] ** numbers[object_list[i].location+1]
+                    
+                    for part in object_list:
+                        if part.location > object_list[i].location:
+                            part.location -= 1
+                    
+                    write_txt(txt, "\nNow you solve the Exponentiation of {}**{}\n\n".format(numbers[object_list[i].location], numbers[object_list[i].location+1]))
                     numbers[object_list[i].location] = n
                     numbers.pop(object_list[i].location+1)
                     

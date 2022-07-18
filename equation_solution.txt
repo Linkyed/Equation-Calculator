@@ -1,6 +1,9 @@
 Solving the Left Side:
 
-Equation: 2+3+4*2*4+2/2√4
+Equation: 2+3+4*2*4+2/2^2√2
+Now you solve the Exponentiation of 2**2
+
+Equation: 2+3+4*2*4+2/2^4
 Now you solve the Square Root of 2√4
 
 Equation: 2+3+4*2*4+2/2.0
