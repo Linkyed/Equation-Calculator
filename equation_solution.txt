@@ -1,0 +1,42 @@
+Solving the Left Side:
+
+Equation: 2+3+4*2*4+2/2√4
+Now you solve the Square Root of 2√4
+
+Equation: 2+3+4*2*4+2/2.0
+Now you solve the Division of 2/2.0
+
+Equation: 2+3+4*2*4+1.0
+Now you solve the Multiplication of 4*2
+
+Equation: 2+3+8*4*1.0
+Now you solve the Multiplication of 8*4
+
+Equation: 2+3+32*1.0
+Now you solve the addition of 2+3
+
+Equation: 5+32+1.0
+Now you solve the addition of 5+32
+
+Equation: 37+1.0
+Now you solve the addition of 37+1.0
+
+Then after all operation you have the number : 38.0 : as a result
+
+
+Solving the Right Side:
+
+Equation: 7-2
+Now you solve the subtraction of 7-2
+
+Then after all operation you have the number : 5 : as a result
+
+
+
+Now, to finish the work: 
+
+Equation: 5-38.0
+Now you solve the subtraction of 5-38.0
+
+Then after all operation you have the number : -33.0 : as a result
+
