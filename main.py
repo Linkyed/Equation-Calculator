@@ -1,112 +1,86 @@
 import tkinter as tk
+import customtkinter as ck
+from tkinter import messagebox
 
-number = []
+numbers_left = []
+x_pos = 50
+y_pos = 30
+equation = []
 
-#Function to use in the TK buttons, just add and erase numbers for now
-def add_1():
-    number.append(1)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_2():
-    number.append(2)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_3():
-    number.append(3)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_4():
-    number.append(4)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_5():
-    number.append(5)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_6():
-    number.append(6)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_7():
-    number.append(7)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_8():
-    number.append(8)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_9():
-    number.append(9)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def add_0():
-    number.append(0)
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    textV.set(string)
-def backspace():
-    number.pop()
-    string = ''
-    for iten in number:
-        string = string + str(iten)
-    print(number)
-    textV.set(string)
-
-
+#Function to save the number that the user typed, it can show if the user typed anything that is not a number too
+def save_number():
+    num = number_box.get()
+    try:
+        num = int(num)
+        numbers_left.append(num)
+        equation.append(num)
+        print(numbers_left)
+        equationLabel.set(equation)
+        number_box.set('')
+        
+    except:
+        messagebox.showinfo("Alert!", 'Please, only type number here')
+        number_box.set('')
+        
 #The TK GUI start
-app = tk.Tk()
-
+ck.set_appearance_mode('dark')
+ck.set_default_color_theme('green')
+app = ck.CTk()
 app.title("Equation Calculator")
 app.geometry('200x200')
-textV = tk.StringVar()
-textV.set('0')
+
+#String variable to use in the GUI
+equationLabel = tk.StringVar()
+equationLabel.set('0')
+number_box = tk.StringVar()
+number_box.set('0')
+
 
 #Label that will show the equation that the user is creating
-equation = tk.Label(app, textvariable=textV ).place(x=100, y=10)
+label = ck.CTkLabel(app, textvariable=equationLabel, corner_radius=10, fg_color=('grey20')).place(x=35, y=30)
 
-#Button for the numbers
-tk.Button(app, text="1", background='grey', height=1, width=1, command=add_1).place(x=100, y=50)
-tk.Button(app, text="2", background='grey', height=1, width=1, command=add_2).place(x=120, y=50)
-tk.Button(app, text="3", background='grey', height=1, width=1, command=add_3).place(x=140, y=50)
-tk.Button(app, text="4", background='grey', height=1, width=1, command=add_4).place(x=100, y=80)
-tk.Button(app, text="5", background='grey', height=1, width=1, command=add_5).place(x=120, y=80)
-tk.Button(app, text="6", background='grey', height=1, width=1, command=add_6).place(x=140, y=80)
-tk.Button(app, text="7", background='grey', height=1, width=1, command=add_7).place(x=100, y=110)
-tk.Button(app, text="8", background='grey', height=1, width=1, command=add_8).place(x=120, y=110)
-tk.Button(app, text="9", background='grey', height=1, width=1, command=add_9).place(x=140, y=110)
-tk.Button(app, text="0", background='grey', height=1, width=1, command=add_0).place(x=120, y=140)
+
+#Just a frame that will be under the buttons and boxes
+frame = ck.CTkFrame(app, width=191, height=100, corner_radius=10)
+frame.place(x=x_pos-45, y=y_pos+34)
+
+
+#Text box to the user type a numebert that he want to add
+entry_box = ck.CTkEntry(app, background='grey', textvariable=number_box, width=80, height=1)
+entry_box.place(x=x_pos+20, y=y_pos+40)
+
+
 
 #Button for the operations
-tk.Button(app, text="+", background='grey', height=1, width=1).place(x=80, y=50)
-tk.Button(app, text="-", background='grey',height=1, width=1).place(x=80, y=80)
-tk.Button(app, text="*", background='grey', height=1, width=1).place(x=80, y=110)
-tk.Button(app, text="/", background='grey', height=1, width=1).place(x=80, y=140)
-tk.Button(app, text="²", background='grey', height=1, width=1).place(x=60, y=50)
-tk.Button(app, text="√", background='grey',height=1, width=1).place(x=60, y=80)
-tk.Button(app, text="(", background='grey', height=1, width=1).place(x=60, y=110)
-tk.Button(app, text=")", background='grey', height=1, width=1).place(x=60, y=140)
+plus = ck.CTkButton(app, text="+")
+plus.place(x=x_pos-10, y=y_pos+40)
+plus.set_dimensions(26, 20)
+minus = ck.CTkButton(app, text="-")
+minus.place(x=x_pos-10, y=y_pos+62)
+minus.set_dimensions(26, 20)
+multiply = ck.CTkButton(app, text="*")
+multiply.place(x=x_pos-10, y=y_pos+83.5)
+multiply.set_dimensions(26, 20)
+division = ck.CTkButton(app, text="/")
+division.place(x=x_pos-10, y=y_pos+105)
+division.set_dimensions(26, 20)
 
-#Button for backspace action
-tk.Button(app, text='⌫', background='grey', height=1, width=1, command=backspace).place(x=160, y=50)
+exponentation = ck.CTkButton(app, text="²")
+exponentation.place(x=x_pos-37, y=y_pos+40)
+exponentation.set_dimensions(26, 20)
+square_root = ck.CTkButton(app, text="√")
+square_root.place(x=x_pos-37, y=y_pos+62)
+square_root.set_dimensions(26, 10)
+start_paren = ck.CTkButton(app, text="(")
+start_paren.place(x=x_pos-37, y=y_pos+83.5)
+start_paren.set_dimensions(26, 20)
+end_paren = ck.CTkButton(app, text=")")
+end_paren.place(x=x_pos-37, y=y_pos+105)
+end_paren.set_dimensions(26, 20)
+
+
+#Button to the user save the number that he typed and add it to the equation
+ck.CTkButton(app, text="💾", background='grey', height=1, width=1, command=save_number).place(x=x_pos+105, y=y_pos+40)
 
 app.mainloop()
 
